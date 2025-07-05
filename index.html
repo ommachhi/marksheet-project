@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Om High School - Result Marksheet</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Om High School - Result Marksheet</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Academic Year:</label>
+        <input type="text" id="year" placeholder="e.g., 2024-25" required class="form-control" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Class:</label>
+        <input type="text" id="class" placeholder="e.g., 10th A" required class="form-control" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Student Name:</label>
+        <input type="text" id="name" required class="form-control" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Roll Number:</label>
+        <input type="text" id="roll" required class="form-control" />
+      </div>
+      <div class="col-12 mb-3">
+        <label class="form-label">How many subjects?</label>
+        <input type="number" id="subjectCount" min="1" required class="form-control mb-2" />
+        <button onclick="generateSubjectInputs()" class="btn btn-info">Generate Subject Inputs</button>
+      </div>
+      <div id="subjectInputs"></div>
+      <div class="col-12">
+        <button onclick="addStudent()" class="btn btn-primary mt-3">Add Student</button>
+      </div>
+    </div>
+
+    <table id="resultTable" class="table table-bordered table-striped mt-5">
+      <thead class="table-primary">
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Roll</th>
+          <th>Total</th>
+          <th>Percentage</th>
+          <th>Grade</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <!-- <button onclick="exportCSV()" class="btn btn-success mt-2">Export to CSV</button> -->
+  </div>
+
+  <!-- Marksheet Modal -->
+  <div class="modal" id="marksheetModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Student Marksheet</h5>
+          <button type="button" class="btn-close" aria-label="Close" onclick="closeModal()"></button>
+        </div>
+        <div class="modal-body" id="marksheetContent">
+          <div style="border: 2px solid #007bff; border-radius: 10px; padding: 20px; background: linear-gradient(to bottom right, #f0f8ff, #e6f7ff);">
+            <img src="logo1.png" alt="School Logo" class="mb-3 d-block mx-auto" style="width: 100px;" />
+            <h3 class="text-center text-primary">OM HIGH SCHOOL</h3>
+            <h5 class="text-center">Academic Year: <span id="marksheetYear"></span> | Class: <span id="marksheetClass"></span></h5>
+
+            <div class="d-flex justify-content-between mt-3">
+              <p><strong>Name:</strong> <span id="marksheetName"></span></p>
+              <p><strong>Roll No:</strong> <span id="marksheetRoll"></span></p>
+            </div>
+
+            <table class="table table-bordered table-hover mt-3">
+              <thead class="table-secondary">
+                <tr><th>Subject</th><th>Marks</th></tr>
+              </thead>
+              <tbody id="marksheetSubjects"></tbody>
+            </table>
+
+            <div class="mt-3">
+              <p><strong>Total:</strong> <span id="marksheetTotal"></span> / <span id="marksheetOutOf"></span></p>
+              <p><strong>Percentage:</strong> <span id="marksheetPercentage"></span>%</p>
+              <p><strong>Grade:</strong> <span id="marksheetGrade"></span> &nbsp;&nbsp; <strong>Rank:</strong> <span id="marksheetRank"></span></p>
+            </div>
+
+            <div class="d-flex justify-content-between mt-5">
+              <p><strong>Signature:</strong> _____________________</p>
+              <p><strong>Date:</strong> ___________</p>
+            </div>
+
+            <div class="text-center mt-4">
+              <button onclick="printMarksheet()" class="btn btn-outline-primary">Print</button>
+              <!-- <button onclick="downloadPDF()" class="btn btn-dark">Download PDF</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

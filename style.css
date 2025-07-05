@@ -1,0 +1,165 @@
+body {
+  background-color: #f5f7fa;
+}
+
+/* Modal design */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Marksheet modal styling */
+#marksheetContent {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'Times New Roman', serif;
+}
+
+#marksheetContent h4 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#marksheetContent table {
+  margin-top: 15px;
+}
+
+#marksheetContent p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+/* Print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #marksheetContent, #marksheetContent * {
+    visibility: visible;
+  }
+  #marksheetContent {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+#marksheetContent h3 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+#marksheetContent h5 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+#marksheetContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+#marksheetContent table th,
+#marksheetContent table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+}
+
+#marksheetContent p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+#marksheetContent .info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#marksheetContent .signature {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+@media print {
+  .btn, .close {
+    display: none !important;
+  }
+}
+
+
+  #marksheetContent, #marksheetContent * {
+    visibility: visible;
+  }
+
+  #marksheetContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .btn,
+  .close {
+    display: none !important;
+  }
+
+  .modal-content {
+    box-shadow: none;
+    border: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+
+  h4, p {
+    margin: 6px 0;
+  }
+}
