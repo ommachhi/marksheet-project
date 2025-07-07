@@ -90,45 +90,45 @@ function showResults() {
   });
 }
 
-// function exportCSV() {
-//   if (!students.length) return alert("No student data available.");
+/function exportCSV() {
+  if (!students.length) return alert("No student data available.");
 
-//   // Gather all unique subject names across all students
-//   const subjectSet = new Set();
-//   students.forEach(s => s.subjects.forEach(sub => subjectSet.add(sub.name)));
-//   const allSubjects = Array.from(subjectSet);
+  // Gather all unique subject names across all students
+  const subjectSet = new Set();
+  students.forEach(s => s.subjects.forEach(sub => subjectSet.add(sub.name)));
+  const allSubjects = Array.from(subjectSet);
 
-//   // Header Row
-//   const header = ["Rank", "Name", "Roll", "Class", "Year", ...allSubjects, "Total", "Percentage", "Grade"];
+  // Header Row
+  const header = ["Rank", "Name", "Roll", "Class", "Year", ...allSubjects, "Total", "Percentage", "Grade"];
 
-//   // Rows
-//   const dataRows = students.map((s, i) => {
-//     const row = [
-//       i + 1,
-//       `"${s.name}"`,
-//       s.roll,
-//       `"${s.studentClass}"`,
-//       s.year
-//     ];
-//     // Fill subject marks in correct order
-//     allSubjects.forEach(subject => {
-//       const sub = s.subjects.find(sub => sub.name === subject);
-//       row.push(sub ? sub.mark : "");
-//     });
-//     row.push(s.total, s.percentage.toFixed(2), s.grade);
-//     return row;
-//   });
+  // Rows
+  const dataRows = students.map((s, i) => {
+    const row = [
+      i + 1,
+      `"${s.name}"`,
+      s.roll,
+      `"${s.studentClass}"`,
+      s.year
+    ];
+    // Fill subject marks in correct order
+    allSubjects.forEach(subject => {
+      const sub = s.subjects.find(sub => sub.name === subject);
+      row.push(sub ? sub.mark : "");
+    });
+    row.push(s.total, s.percentage.toFixed(2), s.grade);
+    return row;
+  });
 
-//   const csvString = [header, ...dataRows].map(r => r.join(",")).join("\r\n");
-//   const BOM = "\uFEFF";
-//   const blob = new Blob([BOM + csvString], { type: "text/csv;charset=utf-8;" });
-//   const link = document.createElement("a");
-//   link.href = URL.createObjectURL(blob);
-//   link.download = `StudentResults_${new Date().toISOString().slice(0, 10)}.csv`;
-//   document.body.appendChild(link);
-//   link.click();
-//   document.body.removeChild(link);
-// }
+  const csvString = [header, ...dataRows].map(r => r.join(",")).join("\r\n");
+  const BOM = "\uFEFF";
+  const blob = new Blob([BOM + csvString], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `StudentResults_${new Date().toISOString().slice(0, 10)}.xls`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 
 function viewMarksheet(index) {
